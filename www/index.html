@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>REST Mastermind</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div id="content">
+      <h1>REST Mastermind</h1>
+      <p>
+        This server hosts a RESTful API which can be used to play a mastermind-style game.
+        Visit the <a href="/api">base API endpoint</a> to get started.
+      </p>
+
+      <h2>Playing the game</h2>
+      <p>
+        In order to play the game, you must first register as a player, then start a new game.
+        The server will generate a 6-digit numeric secret value (for example "038047")
+        which the player will try to guess.
+      </p>
+
+      <p>
+        The server will respond to each guess, letting the player know if they were correct.
+        If the guess was incorrect, feedback is given indicating how many digits were in the
+        correct position and how many were misplaced.
+      </p>
+
+      <p>
+        For example, if the secret value was "112223" and the player guesses "123456",
+        the result will indicate that:
+      </p>
+      <ul>
+        <li>the guess was incorrect</li>
+        <li>one character was in the correct position (the 1)</li>
+        <li>two characters were misplaced (the 2 and 3)</li>
+      </ul>
+    </content>
+  </body>
+</html>

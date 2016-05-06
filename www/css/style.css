@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+#content {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  padding-bottom: 20px;
+}
+
+h1 {
+  background-color: #006600;
+  color: #FFFFFF;
+  padding: 20px;
+}
+
+h2 {
+  padding: 0 20px;
+}
+
+p {
+  padding: 0 20px;
+}
+
+a {
+  color: #006600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #006600;
+}

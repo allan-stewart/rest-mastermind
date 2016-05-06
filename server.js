@@ -6,6 +6,7 @@ let routes = require('./src/routes.js');
 
 let app = express();
 app.use(bodyParser.json());
+app.use(express.static('www'));
 
 routes.registerRoutes(app);
 
