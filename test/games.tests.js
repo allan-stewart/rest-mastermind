@@ -44,7 +44,7 @@ describe('Games', () => {
       assert.equal(result.wins, 0);
       assert.equal(result.losses, 0);
       assert.equal(result.lastGuess, null);
-      assert.equal(result.isPlaying, false);
+      assert.equal(result.hasActiveGame, false);
     });
 
     it('should return an error if there is no player found', () => {

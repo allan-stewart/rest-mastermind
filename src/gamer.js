@@ -12,7 +12,7 @@ class Gamer {
       wins: 0,
       losses: 0,
       lastGuess: null,
-      isPlaying: false,
+      hasActiveGame: false,
       lastAction: timestamper()
     };
     this.game = null;
@@ -26,7 +26,7 @@ class Gamer {
 
   newGame() {
     this.game = new Mastermind(this.secretGenerator.generateWithLength(secretLength), guessesPerGame);
-    this.stats.isPlaying = true;
+    this.stats.hasActiveGame = true;
     this.stats.lastAction = this.timestamper();
     return { secretLength, remainingGuesses: guessesPerGame };
   }
@@ -51,7 +51,7 @@ class Gamer {
   }
 
   clearGame() {
-    this.stats.isPlaying = false;
+    this.stats.hasActiveGame = false;
     this.game = null;
   }
 }

@@ -25,7 +25,7 @@ describe('Gamer', () => {
         wins: 0,
         losses: 0,
         lastGuess: null,
-        isPlaying: false,
+        hasActiveGame: false,
         lastAction: 'now-1'
       });
     });
@@ -46,10 +46,10 @@ describe('Gamer', () => {
       mockGenerator.verify();
     });
 
-    it('should update the isPlaying stat', () => {
+    it('should update the hasActiveGame stat', () => {
       subject.newGame();
       var result = subject.getStats();
-      assert.equal(result.isPlaying, true);
+      assert.equal(result.hasActiveGame, true);
     });
 
     it('should update the last action timestamp', () => {
@@ -94,7 +94,7 @@ describe('Gamer', () => {
         wins: 1,
         losses: 0,
         lastGuess: result,
-        isPlaying: false,
+        hasActiveGame: false,
         lastAction: 'now-3'
       });
     });
@@ -118,7 +118,7 @@ describe('Gamer', () => {
         wins: 0,
         losses: 1,
         lastGuess: result,
-        isPlaying: false,
+        hasActiveGame: false,
         lastAction: 'now-12'
       });
     });
@@ -142,7 +142,7 @@ describe('Gamer', () => {
         wins: 1,
         losses: 0,
         lastGuess: result,
-        isPlaying: false,
+        hasActiveGame: false,
         lastAction: 'now-12'
       });
     });
