@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Play REST Mastermind</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/play.css">
+    <script src="/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/play.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <h1>REST Mastermind</h1>
+
+      <div id="new-player" class="padded">
+        <h2>Register</h2>
+        <form id="new-player-form">
+          <input type="text" name="player-name" placeholder="Your name" />
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+      <div id="registering" class="padded">
+        Registering . . .
+      </div>
+
+      <div id="stats" class="padded">
+        Loading stats . . .
+      </div>
+
+      <div id="loading-game" class="padded">
+        Loading game . . .
+      </div>
+
+      <div id="play" class="padded">
+        <div id="guesses"></div>
+        <form id="guess-form">
+          <input type="text" name="guess" placeholder="123456" />
+          <button type="submit">Guess</button>
+        </form>
+        <button id="new-game-button">New Game</button>
+      </div>
+    </content>
+  </body>
+</html>
