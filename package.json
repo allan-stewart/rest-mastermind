@@ -1,0 +1,28 @@
+{
+  "name": "rest-mastermind",
+  "version": "0.0.1",
+  "description": "A REST-based mastermind game.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.4"
+  },
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allan-stewart/rest-mastermind.git"
+  },
+  "author": "Allan Stewart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allan-stewart/rest-mastermind/issues"
+  },
+  "homepage": "https://github.com/allan-stewart/rest-mastermind#readme",
+  "private": true
+}
