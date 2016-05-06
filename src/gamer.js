@@ -37,10 +37,11 @@ class Gamer {
     if (result.wasCorrect) {
       this.stats.wins++;
       this.clearGame();
-    }
-    if (result.remainingGuesses < 1) {
-      this.stats.losses++;
-      this.clearGame();
+    } else {
+      if (result.remainingGuesses < 1) {
+        this.stats.losses++;
+        this.clearGame();
+      }
     }
     return result;
   }

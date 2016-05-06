@@ -104,5 +104,28 @@ describe('Gamer', () => {
         isPlaying: false
       });
     });
+
+    it('should not count as a loss if the last guess is correct', function () {
+      mockGenerator.expects('generateWithLength').once().returns('123456');
+      subject.newGame();
+      subject.guess('000000');
+      subject.guess('111111');
+      subject.guess('222222');
+      subject.guess('333333');
+      subject.guess('444444');
+      subject.guess('555555');
+      subject.guess('666666');
+      subject.guess('777777');
+      subject.guess('888888');
+      var result = subject.guess('123456');
+      var stats = subject.getStats();
+      assert.deepEqual(stats, {
+        name: 'Tester',
+        wins: 1,
+        losses: 0,
+        lastGuess: result,
+        isPlaying: false
+      });
+    });
   });
 });
