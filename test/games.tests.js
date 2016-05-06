@@ -30,10 +30,9 @@ describe('Games', () => {
       subject.addPlayer('Tester 1');
       subject.addPlayer('Tester 2');
       var result = subject.getAllPlayerStats();
-      assert.deepEqual(result, [
-        { name: 'Tester 1', wins: 0, losses: 0, lastGuess: null, isPlaying: false },
-        { name: 'Tester 2', wins: 0, losses: 0, lastGuess: null, isPlaying: false }
-      ]);
+      assert.equal(result.length, 2);
+      assert.equal(result[0].name, 'Tester 1');
+      assert.equal(result[1].name, 'Tester 2');
     });
   });
 
@@ -41,7 +40,11 @@ describe('Games', () => {
     it('should return player state', () => {
       subject.addPlayer('Tester');
       var result = subject.getPlayerStats('1');
-      assert.deepEqual(result, { name: 'Tester', wins: 0, losses: 0, lastGuess: null, isPlaying: false });
+      assert.equal(result.name, 'Tester');
+      assert.equal(result.wins, 0);
+      assert.equal(result.losses, 0);
+      assert.equal(result.lastGuess, null);
+      assert.equal(result.isPlaying, false);
     });
 
     it('should return an error if there is no player found', () => {

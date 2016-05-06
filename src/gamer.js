@@ -6,16 +6,18 @@ var secretLength = 6;
 var guessesPerGame = 10;
 
 class Gamer {
-  constructor(name, secretGenerator) {
+  constructor(name, secretGenerator, timestamper) {
     this.stats = {
       name,
       wins: 0,
       losses: 0,
       lastGuess: null,
-      isPlaying: false
+      isPlaying: false,
+      lastAction: timestamper()
     };
     this.game = null;
     this.secretGenerator = secretGenerator;
+    this.timestamper = timestamper;
   }
 
   getStats() {
@@ -25,10 +27,12 @@ class Gamer {
   newGame() {
     this.game = new Mastermind(this.secretGenerator.generateWithLength(secretLength), guessesPerGame);
     this.stats.isPlaying = true;
+    this.stats.lastAction = this.timestamper();
     return { secretLength, remainingGuesses: guessesPerGame };
   }
 
   guess(guess) {
+    this.stats.lastAction = this.timestamper();
     if (!this.game) {
       return {error: 'No current game.'}
     }

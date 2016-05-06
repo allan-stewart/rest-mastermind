@@ -2,6 +2,7 @@
 
 var Gamer = require('./gamer.js');
 var secretGenerator = require('./secretGenerator.js');
+var timestamper = require('./timestamper.js');
 
 class Games {
   constructor(idGenerator) {
@@ -18,7 +19,7 @@ class Games {
 
   addPlayer(name) {
     let playerId = this.idGenerator();
-    this.players.push({ playerId, gamer: new Gamer(name, this.secretGenerator) });
+    this.players.push({ playerId, gamer: new Gamer(name, this.secretGenerator, timestamper) });
     return { playerId };
   }
 

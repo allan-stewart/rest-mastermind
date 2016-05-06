@@ -5,13 +5,16 @@ let assert = require('assert');
 let sinon = require('sinon');
 
 describe('Gamer', () => {
-  let mockGenerator;
   let subject;
+  let mockGenerator;
+  let timestampCount = 0;
+  let timestamper = () => { timestampCount++; return `now-${timestampCount}` };
 
   beforeEach(() => {
+    timestampCount = 0;
     let generator = { generateWithLength: () => {} };
     mockGenerator = sinon.mock(generator);
-    subject = new Gamer('Tester', generator);
+    subject = new Gamer('Tester', generator, timestamper)
   });
 
   describe('initial state', () => {
@@ -22,7 +25,8 @@ describe('Gamer', () => {
         wins: 0,
         losses: 0,
         lastGuess: null,
-        isPlaying: false
+        isPlaying: false,
+        lastAction: 'now-1'
       });
     });
   });
@@ -43,9 +47,15 @@ describe('Gamer', () => {
     });
 
     it('should update the isPlaying stat', () => {
-      var result = subject.getStats();
       subject.newGame();
-      assert(result.isPlaying);
+      var result = subject.getStats();
+      assert.equal(result.isPlaying, true);
+    });
+
+    it('should update the last action timestamp', () => {
+      subject.newGame();
+      var result = subject.getStats();
+      assert.equal(result.lastAction, 'now-2');
     });
   });
 
@@ -53,6 +63,12 @@ describe('Gamer', () => {
     it('should return an error if no game is current', () => {
       var result = subject.guess();
       assert.equal(result.error, 'No current game.');
+    });
+
+    it('should update the last action timestamp', () => {
+      subject.guess();
+      var result = subject.getStats();
+      assert.equal(result.lastAction, 'now-2');
     });
 
     it('should return the results of a guess', () => {
@@ -78,7 +94,8 @@ describe('Gamer', () => {
         wins: 1,
         losses: 0,
         lastGuess: result,
-        isPlaying: false
+        isPlaying: false,
+        lastAction: 'now-3'
       });
     });
 
@@ -101,7 +118,8 @@ describe('Gamer', () => {
         wins: 0,
         losses: 1,
         lastGuess: result,
-        isPlaying: false
+        isPlaying: false,
+        lastAction: 'now-12'
       });
     });
 
@@ -124,7 +142,8 @@ describe('Gamer', () => {
         wins: 1,
         losses: 0,
         lastGuess: result,
-        isPlaying: false
+        isPlaying: false,
+        lastAction: 'now-12'
       });
     });
   });
