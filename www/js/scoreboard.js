@@ -10,7 +10,7 @@ function get(url) {
 function loadStats() {
   get('/api/stats').done(function (data) {
     data.sort(sorter);
-    var headers = ['Player', 'Wins', 'Losses', 'Last Guess', 'Active Game?'];
+    var headers = ['Player', 'Wins', 'Losses', 'Last Guess', 'In Game?', 'Timeout'];
     var html = '<table>' +
       '<tr>' + headers.reduce(reduceHeaders, '') + '</tr>' +
       data.map(mapData).join('') +
@@ -35,5 +35,18 @@ function mapData(item) {
     '</td><td>' + item.losses +
     '</td><td>' + (item.lastGuess ? item.lastGuess.guess : '') +
     '</td><td>' + item.hasActiveGame +
+    '</td><td>' + buildTimeout(item.lastAction) +
     '</td></tr>';
+}
+
+function buildTimeout(lastAction) {
+  var value = new Date().getTime() - lastAction;
+  var timeout = 300000;
+  var numberOfBlocks = Math.max(Math.round((timeout - value) / 30000), 1);
+  var html = '<div class="timeout-container">';
+  while (numberOfBlocks --> 0) {
+    html += '<div class="timeout-block"></div>';
+  }
+  html += '</div>';
+  return html;
 }

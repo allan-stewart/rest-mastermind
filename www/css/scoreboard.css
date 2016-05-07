@@ -22,3 +22,29 @@ th {
 td {
   padding: 5px 10px;
 }
+
+.timeout-container {
+  background-color: #000000;
+  padding: 2px;
+  width: 148px;
+}
+
+.timeout-block {
+  display: inline-block;
+  width: 13px;
+  height: 30px;
+  background-color: #00FF00;
+  margin-right: 2px;
+}
+
+.timeout-block:last-child {
+  margin-right: 0;
+}
+
+.timeout-block:nth-child(-n+3) {
+  background-color: #FFFF00;
+}
+
+.timeout-block:nth-child(1) {
+  background-color: #FF0000;
+}
