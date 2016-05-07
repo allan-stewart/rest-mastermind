@@ -41,6 +41,11 @@ class Games {
     var player = this.getPlayerById(playerId);
     return player ? player.gamer.guess(guess) : { error: `No player found by id: ${playerId}` };
   }
+
+  removeInactivePlayers(timeout) {
+    var cutoff = timestamper() - timeout;
+    this.players = this.players.filter(x => x.gamer.stats.lastAction > cutoff );
+  }
 }
 
 module.exports = Games;

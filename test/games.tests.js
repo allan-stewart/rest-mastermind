@@ -5,7 +5,8 @@ let assert = require('assert');
 
 describe('Games', () => {
   let subject;
-  let idGenerator = () => { return '1' };
+  let idsGenerated = 0;
+  let idGenerator = () => { return '' + (idsGenerated++) };
 
   beforeEach(() => {
     subject = new Games(idGenerator);
@@ -21,7 +22,7 @@ describe('Games', () => {
   describe('addPlayer', () => {
     it('should return the id of the new player', () => {
       var result = subject.addPlayer('Tester');
-      assert.deepEqual(result, { playerId: '1' });
+      assert.deepEqual(result, { playerId: '0' });
     });
   });
 
@@ -38,8 +39,8 @@ describe('Games', () => {
 
   describe('getPlayerState', () => {
     it('should return player state', () => {
-      subject.addPlayer('Tester');
-      var result = subject.getPlayerStats('1');
+      var playerId = subject.addPlayer('Tester').playerId;
+      var result = subject.getPlayerStats(playerId);
       assert.equal(result.name, 'Tester');
       assert.equal(result.wins, 0);
       assert.equal(result.losses, 0);
@@ -55,8 +56,8 @@ describe('Games', () => {
 
   describe('newGame', () => {
     it('should return the result of starting a new game', () => {
-      subject.addPlayer('Tester');
-      var result = subject.newGame('1');
+      var playerId = subject.addPlayer('Tester').playerId;
+      var result = subject.newGame(playerId);
       assert.deepEqual(result, {
         remainingGuesses: 10,
         secretLength: 6
@@ -71,14 +72,29 @@ describe('Games', () => {
 
   describe('guess', () => {
     it('should return the result of the guess', () => {
-      subject.addPlayer('Tester');
-      var result = subject.guess('1', '123456');
+      var playerId = subject.addPlayer('Tester').playerId;
+      var result = subject.guess(playerId, '123456');
       assert.deepEqual(result, { error: 'No current game.' });
     });
 
     it('should return an error if there is no player found', () => {
       var result = subject.guess('fake-id');
       assert.deepEqual(result, { error: 'No player found by id: fake-id' });
+    });
+  });
+
+  describe('removeInactivePlayers', () => {
+    it('should remove players that have been inactive for the specified time', (done) => {
+      var playerId1 = subject.addPlayer('Tester 1').playerId;
+      var playerId2 = subject.addPlayer('Tester 2').playerId;
+      setTimeout(() => {
+        subject.newGame(playerId2);
+        subject.removeInactivePlayers(25);
+        var result = subject.getAllPlayerStats();
+        assert.equal(result.length, 1);
+        assert.equal(result[0].name, 'Tester 2');
+        done();
+      }, 50);
     });
   });
 });

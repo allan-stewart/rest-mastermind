@@ -4,6 +4,7 @@ let Games = require('./games.js');
 let uuid = require('node-uuid');
 
 let games = new Games(uuid.v4);
+setInterval(() => { games.removeInactivePlayers(300000)}, 30000);
 
 exports.registerRoutes = app => {
   app.get('/api', (request, response) => {
