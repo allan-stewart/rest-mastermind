@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = () => {
-  return new Date().toISOString();
+  return new Date().getTime();
 };
