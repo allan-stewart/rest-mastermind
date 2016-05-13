@@ -6,10 +6,16 @@ body {
 }
 
 #content {
-  width: 1200px;
-  margin: 0 auto;
+
   background-color: #FFFFFF;
   padding-bottom: 20px;
+}
+
+@media (min-width: 1200px) {
+  #content {
+    width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 h1 {
