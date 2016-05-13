@@ -57,6 +57,19 @@ describe('Gamer', () => {
       var result = subject.getStats();
       assert.equal(result.lastAction, 'now-2');
     });
+
+    it('should count as a loss if there was an active game', () => {
+      subject.newGame();
+      subject.newGame();
+      var result = subject.getStats();
+      assert.equal(result.losses, 1);
+    });
+
+    it('should not count as a loss if there was no active game', () => {
+      subject.newGame();
+      var result = subject.getStats();
+      assert.equal(result.losses, 0);
+    });
   });
 
   describe('guess', () => {

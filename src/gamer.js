@@ -25,6 +25,9 @@ class Gamer {
   }
 
   newGame() {
+    if (this.stats.hasActiveGame) {
+      this.stats.losses++;
+    }
     this.game = new Mastermind(this.secretGenerator.generateWithLength(secretLength), guessesPerGame);
     this.stats.hasActiveGame = true;
     this.stats.lastAction = this.timestamper();
