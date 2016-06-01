@@ -2,7 +2,7 @@
 
 var Mastermind = require('./mastermind.js');
 
-var secretLength = 6;
+var secretLength = 4;
 var guessesPerGame = 10;
 
 class Gamer {

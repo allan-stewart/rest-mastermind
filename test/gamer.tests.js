@@ -35,7 +35,7 @@ describe('Gamer', () => {
     it('should return data for the user', () => {
       var result = subject.newGame();
       assert.deepEqual(result, {
-        secretLength: 6,
+        secretLength: 4,
         remainingGuesses: 10
       });
     });

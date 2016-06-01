@@ -60,7 +60,7 @@ describe('Games', () => {
       var result = subject.newGame(playerId);
       assert.deepEqual(result, {
         remainingGuesses: 10,
-        secretLength: 6
+        secretLength: 4
       });
     });
 
