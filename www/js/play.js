@@ -42,11 +42,12 @@ function newGame() {
   $('#loading-game').show();
   $('#new-game-button').hide();
   $('#play').hide();
-  post('/api/player/' + playerId + '/new-game', {}).done(function () {
+  post('/api/player/' + playerId + '/new-game', {}).done(function (data) {
     $('#loading-game').hide();
     $('#play').show();
     $('#guesses').html('');
     $('#guess-form').show();
+    $('#remainingGuesses').html('(' + data.remainingGuesses + ' guesses remain)');
   });
 }
 
@@ -79,6 +80,7 @@ function guessed(data) {
     ', misplacedDigits: ' + data.misplacedDigits +
     '</div>';
   $('#guesses').append(html);
+  $('#remainingGuesses').html('(' + data.remainingGuesses + ' guesses remain)');
 
   if (data.wasCorrect || data.remainingGuesses < 1) {
     loadStats();
