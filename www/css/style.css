@@ -34,13 +34,19 @@ p {
 
 a {
   color: #006600;
-  text-decoration: none;
-}
-
-a:hover {
   text-decoration: underline;
 }
 
 a:visited {
   color: #006600;
+}
+
+a:hover {
+  color: #009900;
+}
+
+code {
+  background-color: #EEEEFF;
+  border-radius: 5px;
+  padding: 2px 5px;
 }
