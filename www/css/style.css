@@ -6,7 +6,6 @@ body {
 }
 
 #content {
-
   background-color: #FFFFFF;
   padding-bottom: 20px;
 }
@@ -24,7 +23,7 @@ h1 {
   padding: 20px;
 }
 
-h2 {
+h2, h3 {
   padding: 0 20px;
 }
 
@@ -49,4 +48,15 @@ code {
   background-color: #EEEEFF;
   border-radius: 5px;
   padding: 2px 5px;
+}
+
+table {
+  margin: 0 20px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 3px 5px;
 }
