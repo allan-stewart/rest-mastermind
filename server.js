@@ -4,6 +4,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 var cors = require('cors');
 let routes = require('./src/routes.js');
+let config = require('./config.json');
 
 let app = express();
 app.use(bodyParser.json());
@@ -12,6 +13,6 @@ app.use(cors());
 
 routes.registerRoutes(app);
 
-app.listen(3000, () => {
-  console.log(`Mastermind server listening on port 3000`);
+app.listen(config.port, () => {
+  console.log(`Mastermind server listening on port ${config.port}`);
 });
