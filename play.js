@@ -16,11 +16,11 @@ if (command === undefined) {
   }
   console.log();
   console.log('Usage:');
-  console.log('  node play.js api                  - Call the base API.');
-  console.log('  node play.js register <name>      - Register a new player.');
-  console.log('  node play.js new-game <playerId>  - Create a new game.');
-  console.log('  node play.js guess <guess>        - Make a guess in a current game.');
-  console.log('  node play.js stats [playerId]     - Get stats for all players or a specific player.');
+  console.log('  node play.js api                       - Call the base API.');
+  console.log('  node play.js register <name>           - Register a new player.');
+  console.log('  node play.js new-game <playerId>       - Create a new game.');
+  console.log('  node play.js guess <playerId> <guess>  - Make a guess in a current game.');
+  console.log('  node play.js stats [playerId]          - Get stats for all players or a specific player.');
 } else {
   command();
 }
