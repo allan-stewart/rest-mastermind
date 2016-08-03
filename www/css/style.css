@@ -44,10 +44,14 @@ a:hover {
   color: #009900;
 }
 
-code {
-  background-color: #EEEEFF;
+code, .codeblock {
+  background-color: #EEEEEE;
   border-radius: 5px;
   padding: 2px 5px;
+}
+
+pre {
+  margin: 0 20px;
 }
 
 table {

@@ -78,6 +78,41 @@
           <td>Correct!</td>
         </tr>
       </table>
+
+      <h2>Example API call</h2>
+      <p>The HTTP request to register a player should look similar to the following:</p>
+      <pre class="codeblock">POST /api/player HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Content-Length: 20
+
+{"name": "John Doe"}</pre>
+
+      <p>Here is an example <code>curl</code> request to generate such a request:</p>
+      <pre class="codeblock">curl -v -X POST -H 'Content-Type: application/json' -d '{"name": "John Doe"}' http://localhost:3000/api/player</pre>
+
+      <p>And the result of that request would look like this:</p>
+      <pre class="codeblock">*   Trying ::1...
+* Connected to localhost (::1) port 3000 (#0)
+> POST /api/player HTTP/1.1
+> Host: localhost:3000
+> User-Agent: curl/7.43.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 20
+>
+* upload completely sent off: 20 out of 20 bytes
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Access-Control-Allow-Origin: *
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 51
+< ETag: W/"33-uXKtVy1bUD7am+BXBYQr9w"
+< Date: Wed, 03 Aug 2016 06:06:33 GMT
+< Connection: keep-alive
+<
+* Connection #0 to host localhost left intact
+{"playerId":"5cb55a9e-9dc0-4f3d-b774-4ca2eb6fa53d"}</pre>
     </content>
   </body>
 </html>
