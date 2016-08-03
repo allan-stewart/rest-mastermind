@@ -9,8 +9,8 @@ to hack on at meetups or other gatherings.
 
 ## Getting things running
 
-After cloning the repository, run `npm install` to get the dependencies, and
-then you can run the server via `npm start`.
+After cloning the repository, run `npm install` to get the dependencies,
+then run the server via `npm start`.
 
 By default the server will run on port 3000, but this can be changed by editing
 the `config.json` file.
@@ -19,10 +19,11 @@ accessing via `localhost`; update with the appropriate host / IP address
 and port as necessary.)
 
 With the server running, you can then visit the intro page at:
-http://localhost:3000/
+[http://localhost:3000/](http://localhost:3000/)
 
 When hosting this in a group, the facilitator should explain the game and then
-may want to display the scoreboard page: http://localhost:3000/scoreboard.html
+may want to display the scoreboard page:
+[http://localhost:3000/scoreboard.html](http://localhost:3000/scoreboard.html)
 
 
 ## Playing the game
@@ -39,7 +40,7 @@ or even opt to create algorithms / AI for playing the game.
 
 There are also two reference implementations provided.
 The first is a JavaScript page hosted by the server at:
-http://localhost:3000/play.html
+[http://localhost:3000/play.html](http://localhost:3000/play.html)
 
 The second is the [play.js](play.js) node script.
 Run `node play.js` to get usage information.
