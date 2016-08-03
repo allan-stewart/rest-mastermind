@@ -6,6 +6,8 @@ let uuid = require('node-uuid');
 let games = new Games(uuid.v4);
 setInterval(() => { games.removeInactivePlayers(300000)}, 30000);
 
+let maxNameLength = 30;
+
 exports.registerRoutes = app => {
   app.get('/api', (request, response) => {
     response.send({
@@ -25,7 +27,20 @@ exports.registerRoutes = app => {
   });
 
   app.post('/api/player', (request, response) => {
-    response.send(games.addPlayer(request.body.name));
+    let name = request.body.name;
+    if (!name) {
+      response.status(400).send({error: 'You must provide a name'});
+      return;
+    }
+    if (name.length > maxNameLength) {
+      response.status(400).send({error: `Names may not be longer than ${maxNameLength} characters`});
+      return;
+    }
+    if (games.getAllPlayerStats().some(x => x.name.toLowerCase() == name.toLowerCase())) {
+      response.status(409).send({error: `There is already a player with the name ${name}`});
+      return;
+    }
+    response.send(games.addPlayer(name));
   });
 
   app.get('/api/player/:playerId', (request, response) => {
