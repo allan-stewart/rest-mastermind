@@ -17,7 +17,7 @@ exports.registerRoutes = app => {
         { endpoint: '/api/player', method: 'POST', body: { name: 'Player Name' }, purpose: 'Register a new player.' },
         { endpoint: '/api/player/{playerId}', method: 'GET', purpose: 'Get the stats for a specific player.' },
         { endpoint: '/api/player/{playerId}/new-game', method: 'POST', body: {}, purpose: 'Start a new game for the player.' },
-        { endpoint: '/api/player/{playerId}/guess', method: 'POST', body: { guess: '123456' }, purpose: 'Make a guess in the current game.' }
+        { endpoint: '/api/player/{playerId}/guess', method: 'POST', body: { guess: '1234' }, purpose: 'Make a guess in the current game.' }
       ]
     });
   });
