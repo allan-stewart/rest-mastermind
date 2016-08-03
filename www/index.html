@@ -81,14 +81,22 @@
 
       <h2>Example API call</h2>
       <p>The HTTP request to register a player should look similar to the following:</p>
-      <pre class="codeblock">POST http://localhost:3000/api/player HTTP/1.1
+      <pre class="codeblock">POST <span class="host">http://localhost:3000</span>/api/player HTTP/1.1
 Content-Type: application/json
 Content-Length: 20
 
 {"name": "John Doe"}</pre>
 
       <p>Here is an example <code>curl</code> request to generate such a request:</p>
-      <pre class="codeblock">curl -v -X POST -H 'Content-Type: application/json' -d '{"name": "John Doe"}' http://localhost:3000/api/player</pre>
+      <pre class="codeblock">curl -v -X POST -H 'Content-Type: application/json' -d '{"name": "John Doe"}' <span class="host">http://localhost:3000</span>/api/player</pre>
     </content>
+
+    <script type="text/javascript">
+      var host = window.location.origin;
+      var elements = document.getElementsByClassName('host');
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].innerHTML = host;
+      }
+    </script>
   </body>
 </html>
